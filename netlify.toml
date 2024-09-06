@@ -1,2 +1,4 @@
 [dev]
 	publish="dist"
+[build]
+	publish="dist"
