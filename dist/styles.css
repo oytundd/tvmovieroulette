@@ -19,6 +19,7 @@ body {
     max-width: 800px;
     margin: 2rem auto;
     padding: 2rem;
+    margin-top: 10rem;
     background: rgba(255, 255, 255, 0.1);
     border-radius: 15px;
     /* box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
@@ -56,16 +57,12 @@ input[type="radio"] {
     margin-right: 0.3rem;
 }
 
-input[type="number"],
 select {
     padding: 0.5rem;
     border: none;
     border-radius: 5px;
     background-color: rgba(255, 255, 255, 0.1);
     color: #ffffff;
-}
-
-select {
     appearance: none;
     padding-right: 2rem;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23ffffff'%3E%3Cpath d='M10.293 3.293 6 7.586 1.707 3.293A1 1 0 0 0 .293 4.707l5 5a1 1 0 0 0 1.414 0l5-5a1 1 0 1 0-1.414-1.414z'/%3E%3C/svg%3E");
@@ -74,17 +71,74 @@ select {
     background-size: 0.65rem auto;
 }
 
-/* New styles for dropdown options */
 select option {
     background-color: #2c2c2c;
     color: #ffffff;
 }
 
-/* Styles for dropdown in focus and hover states */
 select:focus,
 select:hover {
     background-color: rgba(255, 255, 255, 0.2);
     outline: none;
+}
+
+/* Custom select styles */
+.custom-select {
+    position: relative;
+    font-family: Arial;
+    width: 200px;
+}
+
+.select-selected {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    padding: 0.5rem;
+    cursor: pointer;
+}
+
+.select-selected:after {
+    position: absolute;
+    content: "";
+    top: 14px;
+    right: 10px;
+    width: 0;
+    height: 0;
+    border: 6px solid transparent;
+    border-color: #fff transparent transparent transparent;
+}
+
+.select-items {
+    position: absolute;
+    background-color: #2c2c2c;
+    top: 100%;
+    left: 0;
+    z-index: 99;
+    border-radius: 0 0 5px 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.select-hide {
+    display: none;
+}
+
+.genre-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    padding: 10px;
+    width: max-content;
+    max-width: 80vw;
+}
+
+.genre-grid div {
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    white-space: nowrap;
+}
+
+.genre-grid div:hover {
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
 button {
@@ -139,6 +193,9 @@ footer {
     background-color: rgba(0, 0, 0, 0.5);
     padding: 1rem;
     text-align: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
 }
 
 .attribution, .credits {
@@ -147,9 +204,10 @@ footer {
     align-items: center;
     flex-wrap: wrap;
     gap: 1rem;
+    margin: 0.2rem;
 }
 
-.attribution > div, .credits {
+.attribution p, .credits a {
     font-size: 0.8rem;
     color: #cccccc;
 }
@@ -181,5 +239,21 @@ a:hover {
     .filter-row {
         flex-direction: column;
         align-items: flex-start;
+    }
+
+    .genre-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .genre-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .genre-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
 }

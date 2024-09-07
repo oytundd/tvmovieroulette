@@ -47,7 +47,7 @@ spinButton.addEventListener('click', async () => {
     
     // const imdbThreshold = imdbScoreInput.value;
     const imdbThreshold = imdbScoreThreshold.value;
-    const genreSelected = genreSelector.value;
+    const genreSelected = getSelectedGenre();
     const typeSelected = getCheckedOption();
     // const rtThreshold = rtScoreInput.value;
     
@@ -61,4 +61,42 @@ spinButton.addEventListener('click', async () => {
     
     spinButton.disabled = false;
     spinButton.textContent = 'Spin the Roulette';
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    const customSelect = document.querySelector('.custom-select');
+    const selectSelected = customSelect.querySelector('.select-selected');
+    const selectItems = customSelect.querySelector('.select-items');
+    let selectedGenre = 'Any'; // Default selected genre
+
+    selectSelected.addEventListener('click', function(e) {
+        e.stopPropagation();
+        this.classList.toggle('select-arrow-active');
+        selectItems.classList.toggle('select-hide');
+    });
+
+    const genres = selectItems.querySelectorAll('div');
+    genres.forEach(item => {
+        item.addEventListener('click', function(e) {
+            e.stopPropagation();
+            selectSelected.textContent = this.textContent;
+            selectedGenre = this.getAttribute('data-value');
+            selectSelected.classList.remove('select-arrow-active');
+            selectItems.classList.add('select-hide');
+            console.log('Selected genre:', selectedGenre); // Log the selected genre
+        });
+    });
+
+    document.addEventListener('click', function() {
+        selectSelected.classList.remove('select-arrow-active');
+        selectItems.classList.add('select-hide');
+    });
+
+    // Function to get the currently selected genre
+    window.getSelectedGenre = function() {
+        return selectedGenre;
+    };
+
+    // Example: Add event listener to the "Spin the Roulette" button
+
 });

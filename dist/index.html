@@ -10,54 +10,55 @@
     <div class="container">
         <h1>Film Roulette</h1>
         <div class="filters">
-
-            <input type="radio" id="movie" name="type" value="movie" checked />
-            <label for="movie">Movie</label>
-            <input type="radio" id="tvShow" name="type" value="tvSeries" />
-            <label for="tvShow">Tv Show</label><br>
-
-            <!-- <label for="imdbScore">Minimum IMDb Score 1 - 10:</label>
-            <input type="number" id="imdbScore" min="0" max="10" step="0.1" value="0"> -->
-            <label for="genre">Choose a genre:</label>
-            <select id="genre" name="genre">
-                <option value="Any">Any Genre</option>
-                <option value="Action">Action</option>
-                <option value="Adventure">Adventure</option>
-                <option value="Animation">Animation</option>
-                <option value="Biography">Biography</option>
-                <option value="Comedy">Comedy</option>
-                <option value="Crime">Crime</option>
-                <option value="Documentary">Documentary</option>
-                <option value="Drama">Drama</option>
-                <option value="Family">Family</option>
-                <option value="Fantasy">Fantasy</option>
-                <option value="Film-Noir">Film-Noir</option>
-                <option value="History">History</option>
-                <option value="Horror">Horror</option>
-                <option value="Musical">Musical</option>
-                <option value="Mystery">Mystery</option>
-                <option value="News">News</option>
-                <option value="Romance">Romance</option>
-                <option value="Sci-Fi">Sci-Fi</option>
-                <option value="Sport">Sport</option>
-                <option value="Thriller">Thriller</option>
-                <option value="War">War</option>
-                <option value="Western">Western</option>
-            </select>
-
-
-            <label for="scores">IMDB score :</label>
-            <select name="scores" id="scores">
-            <option value="9">> 9</option>
-            <option selected="selected" value="8">> 8</option>
-            <option value="7">> 7</option>
-            <option value="6">> 6</option>
-            <option value="5">> 5</option>
-            <option value="0"> Any </option>
-            </select>
-
-            <!-- <label for="rtScore">Minimum Rotten Tomatoes Score 0 - 100:</label>
-            <input type="number" id="rtScore" min="0" max="100" step="1" value="0"> -->
+            <div class="filter-row">
+                <input type="radio" id="movie" name="type" value="movie" checked />
+                <label for="movie">Movie</label>
+                <input type="radio" id="tvShow" name="type" value="tvSeries" />
+                <label for="tvShow">TV Show</label>
+            </div>
+            <div class="filter-row">
+                <label for="genre">Choose a genre:</label>
+                <div class="custom-select">
+                    <div class="select-selected">Any Genre</div>
+                    <div class="select-items select-hide">
+                        <div class="genre-grid">
+                            <div data-value="Any">Any Genre</div>
+                            <div data-value="Action">Action</div>
+                            <div data-value="Adventure">Adventure</div>
+                            <div data-value="Animation">Animation</div>
+                            <div data-value="Biography">Biography</div>
+                            <div data-value="Comedy">Comedy</div>
+                            <div data-value="Crime">Crime</div>
+                            <div data-value="Documentary">Documentary</div>
+                            <div data-value="Drama">Drama</div>
+                            <div data-value="Family">Family</div>
+                            <div data-value="Fantasy">Fantasy</div>
+                            <div data-value="Film-Noir">Film-Noir</div>
+                            <div data-value="History">History</div>
+                            <div data-value="Horror">Horror</div>
+                            <div data-value="Musical">Musical</div>
+                            <div data-value="Mystery">Mystery</div>
+                            <div data-value="Romance">Romance</div>
+                            <div data-value="Sci-Fi">Sci-Fi</div>
+                            <div data-value="Sport">Sport</div>
+                            <div data-value="Thriller">Thriller</div>
+                            <div data-value="War">War</div>
+                            <div data-value="Western">Western</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="filter-row">
+                <label for="scores">IMDB score :</label>
+                <select name="scores" id="scores">
+                    <option value="9">> 9</option>
+                    <option selected="selected" value="8">> 8</option>
+                    <option value="7">> 7</option>
+                    <option value="6">> 6</option>
+                    <option value="5">> 5</option>
+                    <option value="0"> Any </option>
+                </select>
+            </div>
         </div>
         <button id="spinButton">Spin the Roulette</button>
         <div id="movieResult" class="hidden">
@@ -70,13 +71,14 @@
     </div>
     <footer>
         <div class="attribution ">
-<div class ="omdb">
-    <p>Powered by <a href="https://www.omdbapi.com/">OMDB api</a>, <a href="https://www.tvmaze.com/api/">TVMAZE api</a> and <a href="https://www.themoviedb.org/">TMDB api</a>.</p>
-</div>
 
+    <p>Powered by <a href="https://www.omdbapi.com/">OMDB api</a>, <a href="https://www.tvmaze.com/api/">TVMAZE api</a> and <a href="https://www.themoviedb.org/">TMDB api</a>.</p>
+
+</div>
         <div class="credits">
         <a href="https://github.com/oytundd">Oytun Deniz Dönmez</a>
         <a href="https://github.com/oytundd/filmroulette">Repo</a>
+        <a href="https://buymeacoffee.com/oytundd">Buy me a coffee ☕</a>
         </div>
     </footer>
     <script src="script.js"></script>
