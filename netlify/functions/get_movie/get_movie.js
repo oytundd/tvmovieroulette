@@ -11,7 +11,6 @@ const handler = async (event) => {
         const database = (await clientPromise).db(process.env.MONGODB_DATABASE);
         const collection = database.collection(process.env.MONGODB_COLLECTION);
         let results = ''
-        console.log(typeSelected)
         if(genreSelected === 'Any'){
           results = await collection.aggregate([
             { $match: { titleType: typeSelected,
@@ -21,7 +20,6 @@ const handler = async (event) => {
             { $sample: { size: 1 } }
         ]).toArray()
       }else{
-        console.log(typeof(genreSelected));
           results = await collection.aggregate([
           { $match: { titleType: typeSelected,
                       genres: {$regex: genreSelected },
@@ -33,7 +31,7 @@ const handler = async (event) => {
       }
 
       const imdbId = results[0].tconst;
-      console.log(results[0]);
+
       
       
       if(typeSelected === 'movie'){
@@ -65,7 +63,6 @@ const handler = async (event) => {
       try {
         const detailResponse = await fetch(`https://api.tvmaze.com/lookup/shows?imdb=${imdbId}`);
         const detailData = await detailResponse.json();
-        console.log(detailData);
         const cleanedString = detailData.summary.replace(/<[^>]*>/g, "")
         // console.log(detailData);
         // const posterPathRaw = detailData.image.medium;
@@ -80,7 +77,6 @@ const handler = async (event) => {
           genres: results[0].genres
         };
 
-        console.log(validMovie);
       } catch (error) {
         console.log(error);
       }
